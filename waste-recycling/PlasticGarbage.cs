@@ -5,10 +5,13 @@ namespace WasteRecycling
         public bool Cleaned { get; set; }
 
 
-
-        public PlasticGarbage(string name, bool cleaned)
+        public bool isCleaned()
         {
-            Name = name; //Name is from Garbage class
+            return this.Cleaned;
+        }
+
+        public PlasticGarbage(string name, bool cleaned) : base(name)
+        {
             Cleaned = cleaned;
         }
 

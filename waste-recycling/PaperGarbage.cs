@@ -4,9 +4,8 @@ namespace WasteRecycling
     {
         public bool Squeezed { get; set; }
 
-        public PaperGarbage(string name, bool squeezed)
+        public PaperGarbage(string name, bool squeezed) : base(name)
         {
-            Name = name;
             Squeezed = squeezed;
         }
 
@@ -15,6 +14,10 @@ namespace WasteRecycling
             Squeezed = true;
         }
 
+        public bool isSqueezed()
+        {
+            return this.Squeezed;
+        }
 
     }
 }
