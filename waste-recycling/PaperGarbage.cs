@@ -9,7 +9,7 @@ namespace WasteRecycling
             Squeezed = squeezed;
         }
 
-        public void Squeez()
+        public void Squeeze()
         {
             Squeezed = true;
         }

@@ -60,13 +60,17 @@ namespace WasteRecycling
                     throw new DustbinContentException("exception!");
                 }
                 else {
-                    PlasticGarbage[] newPlasticContent = 
+                    for (int i = 0; i < 1; i++)
+                    {
+                        PlasticContent[i] = newgarbage1;
+
+                    }
                 }
 
             } 
 
             //Paper Garbage
-            if (garbage is PaperGarbage)
+            else if (garbage is PaperGarbage)
             {
                 PaperGarbage newgarbage2 = (PaperGarbage)garbage;
                 if (!newgarbage2.isSqueezed())
@@ -74,12 +78,33 @@ namespace WasteRecycling
                     throw new DustbinContentException("exception!");
                 }
                 else {
-                    PaperGarbage[] newPaperContent = 
+                    for (int i = 0; i < 1; i++)
+                    {
+                        PaperContent[i] = newgarbage2;
+
+                    }
                 }
 
 
             }
 
+            else if (garbage is Garbage)
+            {
+                Garbage newgarbage3 = (Garbage)garbage;
+                for (int i = 0; i < 1; i++)
+                    {
+                        HouseWasteContent[i] = newgarbage3;
+
+                    }
+
+
+
+            }
+            
+            else if (!(garbage is Garbage) && !(garbage is PaperGarbage) && !(garbage is Garbage))
+            {
+                throw new DustbinContentException("exception!");
+            }
 
 
             
@@ -89,7 +114,10 @@ namespace WasteRecycling
 
         public void EmptyContents()
         {
-            Array.Clear(PlasticContent, 1, PlasticContent.Length);
+            Array.Clear(PlasticContent, PlasticContent.Length, 0);
+            Array.Clear(PaperContent, PaperContent.Length, 0);
+            Array.Clear(HouseWasteContent, HouseWasteContent.Length, 0);
+
         }
 
 

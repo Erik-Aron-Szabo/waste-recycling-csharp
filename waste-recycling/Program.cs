@@ -4,7 +4,7 @@ namespace WasteRecycling
     {
         public static void Main(string[] args)
         {
-            PaperGarbage Garbage1 = new PaperGarbage("textbook", "false");
+            PaperGarbage Garbage1 = new PaperGarbage("textbook", false);
 
 
             Garbage[] rottenTomatoes = new Garbage[3];
