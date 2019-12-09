@@ -4,23 +4,47 @@ namespace WasteRecycling
     {
         public static void Main(string[] args)
         {
-            PaperGarbage Garbage1 = new PaperGarbage("textbook", false);
 
+            Dustbin Dustbin1 = new Dustbin("red"); // letrehoz peldany
+            PaperGarbage tissue = new PaperGarbage("used tissue", false);
 
-            Garbage[] rottenTomatoes = new Garbage[3];
+            PaperGarbage[] tissues = new PaperGarbage[0];
+
+            PaperGarbage[] upgradedTissues = new PaperGarbage[tissues.Length+1];
+            for (int i = 0; i < tissues.Length; i++)
+            {
+                upgradedTissues[i] = tissues[i];
+            }
+            upgradedTissues[upgradedTissues.Length-1] = tissue;
+            tissues = upgradedTissues;
+
+            Garbage[] rottenTomatoes = new Garbage[0];
+            Garbage rottenTomato = new Garbage("rotten tomato");
+            Garbage[] upgradedTomatoes = new Garbage[rottenTomatoes.Length+1];
             for (int i = 0; i < rottenTomatoes.Length; i++)
             {
-                rottenTomatoes[i] = new Garbage("rotten tomato nr." + (i + 1));
+                upgradedTomatoes[i] = rottenTomatoes[i];
             }
+            upgradedTomatoes[upgradedTomatoes.Length-1] = rottenTomato;
+            rottenTomatoes = upgradedTomatoes;
 
             PlasticGarbage milkJug = new PlasticGarbage("plastic milk jug", false);
 
-            Dustbin dustbin = new Dustbin("Jenny's handsome");
-            for (int i = 0; i < 3; i++)
+            if (!milkJug.Cleaned)
             {
-                //dustbin.ThrowOutGarbage
-
+                milkJug.Clean();
             }
+            PlasticGarbage[] jugs = new PlasticGarbage[0];
+            PlasticGarbage[] upgradedJugs = new PlasticGarbage[jugs.Length+1];
+            for (int i = 0; i < jugs.Length; i++)
+            {
+                upgradedJugs[i] = jugs[i];
+            }
+            upgradedJugs[upgradedJugs.Length-1] = milkJug;
+            jugs = upgradedJugs;
+
+
+            Dustbin1.DisplayContents(rottenTomatoes, jugs, tissues);
 
 
 
