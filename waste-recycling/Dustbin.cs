@@ -7,11 +7,11 @@ namespace WasteRecycling
     public class Dustbin
     {
         public string Color { get; set; }
-        public PaperGarbage[] PaperContent = new PaperGarbage[2]; 
+        public PaperGarbage[] PaperContent = new PaperGarbage[0]; 
 
-        public PlasticGarbage[] PlasticContent = new PlasticGarbage[2];
+        public PlasticGarbage[] PlasticContent = new PlasticGarbage[0];
 
-        public Garbage[] HouseWasteContent = new Garbage[2];
+        public Garbage[] HouseWasteContent = new Garbage[0];
 
 
         public Dustbin(string color)
@@ -55,16 +55,19 @@ namespace WasteRecycling
             if (garbage is PlasticGarbage)
             {
                 PlasticGarbage newgarbage1 = (PlasticGarbage)garbage;
-                if (!newgarbage1.isCleaned())
+                if (!(newgarbage1.isCleaned()))
                 {
                     throw new DustbinContentException("exception!");
                 }
                 else {
-                    for (int i = 0; i < 1; i++)
+                    PlasticGarbage[] Temp = new PlasticGarbage[PlasticContent.Length+1];
+                    for (int i = 0; i < PlasticContent.Length; i++)
                     {
-                        PlasticContent[i] = newgarbage1;
+                        Temp[i] = newgarbage1;
 
                     }
+                    Temp[Temp.Length-1] = newgarbage1;
+                    PlasticContent = Temp;
                 }
 
             } 
@@ -73,16 +76,19 @@ namespace WasteRecycling
             else if (garbage is PaperGarbage)
             {
                 PaperGarbage newgarbage2 = (PaperGarbage)garbage;
-                if (!newgarbage2.isSqueezed())
+                if (!(newgarbage2.isSqueezed()))
                 {
                     throw new DustbinContentException("exception!");
                 }
                 else {
-                    for (int i = 0; i < 1; i++)
+                    PaperGarbage[] Temp = new PaperGarbage[PaperContent.Length+1];
+                    for (int i = 0; i < PaperContent.Length; i++)
                     {
-                        PaperContent[i] = newgarbage2;
+                        Temp[i] = newgarbage2;
 
                     }
+                    Temp[Temp.Length-1] = newgarbage2;
+                    PaperContent = Temp;
                 }
 
 
@@ -91,11 +97,13 @@ namespace WasteRecycling
             else if (garbage is Garbage)
             {
                 Garbage newgarbage3 = (Garbage)garbage;
-                for (int i = 0; i < 1; i++)
+                Garbage[] Temp = new Garbage[HouseWasteContent.Length+1];
+                for (int i = 0; i < HouseWasteContent.Length; i++)
                     {
-                        HouseWasteContent[i] = newgarbage3;
-
+                        Temp[i] = HouseWasteContent[i];
                     }
+                Temp[Temp.Length-1] = newgarbage3;
+                HouseWasteContent = Temp;
 
 
 
@@ -114,9 +122,9 @@ namespace WasteRecycling
 
         public void EmptyContents()
         {
-            Array.Clear(PlasticContent, PlasticContent.Length, 0);
-            Array.Clear(PaperContent, PaperContent.Length, 0);
-            Array.Clear(HouseWasteContent, HouseWasteContent.Length, 0);
+            PlasticContent = new PlasticGarbage[0];
+            PaperContent = new PaperGarbage[0];
+            HouseWasteContent = new Garbage[0];
 
         }
 
