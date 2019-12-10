@@ -46,7 +46,7 @@ namespace WasteRecycling
 
             Dustbin1.DisplayContents(rottenTomatoes, jugs, tissues);
 
-
+            Dustbin1.EmptyContents();
 
         }
     }
